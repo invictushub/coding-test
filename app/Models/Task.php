@@ -7,14 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
         'name',
         'phase_id',
         'user_id',
+        'due_date',
+        'completed_at',
     ];
 
-    use HasFactory;
+    protected $casts = [
+        'due_date' => 'date',
+        'completed_at' => 'date'
+    ];
 
     function user()
     {

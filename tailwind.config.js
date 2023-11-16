@@ -17,6 +17,14 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+        maxHeight: {
+            '0': '0',
+            '1/4': '25%',
+            '1/2': '50%',
+            '3/4': '75%',
+            '3.25/4': '80%',
+            'full': '100%',
+        }
     },
 
     plugins: [forms],

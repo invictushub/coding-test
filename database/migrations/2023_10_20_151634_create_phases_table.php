@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('phases', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('is_completed')->default(0);
             $table->timestamps();
         });
     }
