@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePhaseRequest;
 use App\Http\Requests\UpdatePhaseRequest;
 use App\Models\Phase;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Response;
+use Psy\Util\Json;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class PhaseController extends Controller
 {
@@ -59,8 +63,12 @@ class PhaseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Phase $phase)
+    public function destroy(Phase $phase): JsonResponse
     {
-        //
+        //We can use an observer here, but I am not a big fan of observer because did not provide information to code viewer
+        $phase->tasks()->delete();
+        $phase->delete();
+
+        return response()->json([], ResponseAlias::HTTP_OK);
     }
 }
